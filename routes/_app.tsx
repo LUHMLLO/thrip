@@ -7,7 +7,7 @@ import {
   props,
   reset,
   tokens,
-} from "jsr:@luhmllo/lilycat@0.1.19";
+} from "jsr:@luhmllo/lilycat@0.1.20";
 import Appbar from "#components/Appbar.tsx";
 import Bottombar from "#components/Bottombar.tsx";
 
