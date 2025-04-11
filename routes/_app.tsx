@@ -1,13 +1,6 @@
 import { asset } from "$fresh/runtime.ts";
 import { type PageProps } from "$fresh/server.ts";
-import {
-  customs,
-  icons,
-  normalize,
-  props,
-  reset,
-  tokens,
-} from "jsr:@luhmllo/lilycat@0.1.20";
+import * as lilycat from "jsr:@luhmllo/lilycat@0.1.27";
 import Appbar from "#components/Appbar.tsx";
 import Bottombar from "#components/Bottombar.tsx";
 
@@ -41,7 +34,7 @@ export default function App({ Component, url }: PageProps) {
           lang="css"
           // deno-lint-ignore react-no-danger
           dangerouslySetInnerHTML={{
-            __html: `${tokens}${reset}${normalize}${icons}${props}${customs}`,
+            __html: lilycat.all,
           }}
         />
 

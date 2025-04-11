@@ -6,11 +6,6 @@
   --clr-accent: hsl(0deg, 0%, 50%);
 }
 
-*::-webkit-scrollbar {
-  display: none;
-  width: 0;
-}
-
 html {
   font-family: "Space Grotesk", serif;
 }
@@ -25,12 +20,9 @@ body {
 #appbar {
   display: flex;
   flex-direction: column;
-  background-color: hsla(from var(--clr-background) h s l / 50%);
-  backdrop-filter: blur(var(--xs, 5px));
   border-bottom: solid 1px hsl(from var(--clr-background) h s calc(l + 5));
   grid-column: full;
   place-items: center;
-  z-index: 2;
 
   & > figure {
     margin-block: var(--nm, 20px) var(--md, 15px);
@@ -59,7 +51,6 @@ body {
   grid-auto-rows: max-content;
   grid-template-columns: subgrid;
   overflow: auto;
-  z-index: 1;
 
   :where(article) {
     border-bottom: solid 1px hsl(from var(--clr-background) h s calc(l + 5));
@@ -96,35 +87,14 @@ body {
 }
 
 #bottombar {
-  background-color: hsla(0, 0, 0, 0.75%);
-  backdrop-filter: blur(var(--xl));
   border-top: solid 1px hsl(from var(--clr-background) h s calc(l + 5));
-  bottom: 0;
   gap: var(--xl, 30px);
   grid-column: full;
   padding: var(--nm, 20px) var(--xl, 30px);
   place-content: center;
-  z-index: 2;
+  place-items: center;
 
   :where(.icon) {
     --size: var(--xl, 30px);
   }
-}
-
-#cursor {
-  aspect-ratio: 1/1;
-  backdrop-filter: blur(var(--xl));
-  background-color: hsla(0, 0%, 100%, 0.5);
-  border-radius: 50%;
-  mix-blend-mode: difference;
-  outline: solid 1px var(--clr-content);
-  outline-offset: 1px;
-  pointer-events: none;
-  position: fixed;
-  transition-property: background, box-shadow, translate;
-  transition-duration: var(--animDuration);
-  transition-timing-function: var(--animTiming);
-  user-select: none;
-  width: var(--xl);
-  z-index: 10000000000;
 }
