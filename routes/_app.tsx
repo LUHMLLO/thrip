@@ -28,7 +28,7 @@ export default function App({ Component, url }: PageProps) {
           href={asset("/media/logo.svg")}
         />
 
-        <title>threads</title>
+        <title>thrip</title>
 
         <style
           lang="css"

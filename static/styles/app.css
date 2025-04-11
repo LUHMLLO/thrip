@@ -12,9 +12,11 @@ html {
 
 body {
   display: grid;
-  grid-template-columns: [full-start] minmax(1rem, 1fr) [content-start] minmax(85dvw, 1fr) [content-end] minmax(1rem, 1fr) [full-end];
+  grid-template-columns: [full-start] minmax(var(--xs, 5px), 1fr) [content-start] minmax(85dvw, 1fr) [content-end] minmax(var(--xs, 5px), 1fr) [full-end];
   grid-template-rows: max-content minmax(0, 1fr) max-content;
   height: 100dvh;
+  overflow: clip;
+  width: 100dvw;
 }
 
 #appbar {
@@ -88,13 +90,14 @@ body {
 
 #bottombar {
   border-top: solid 1px hsl(from var(--clr-background) h s calc(l + 5));
-  gap: var(--xl, 30px);
+  gap: var(--nm, 20px);
   grid-column: full;
-  padding: var(--nm, 20px) var(--xl, 30px);
+  overflow: clip;
+  padding: var(--nm, 20px);
   place-content: center;
   place-items: center;
 
   :where(.icon) {
-    --size: var(--xl, 30px);
+    --size: var(--lg, 25px);
   }
 }
