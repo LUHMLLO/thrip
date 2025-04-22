@@ -1,6 +1,6 @@
 export default function Appbar() {
   return (
-    <div id="appbar">
+    <div id="app__topbar">
       <figure className="aspect-[1/1] h-xl">
         <svg
           fill="var(--clr-text)"

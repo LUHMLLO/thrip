@@ -1,8 +1,8 @@
-import { asset } from "$fresh/runtime.ts";
-import { type PageProps } from "$fresh/server.ts";
-import * as lilycat from "jsr:@luhmllo/lilycat@0.1.27";
 import Appbar from "#components/Appbar.tsx";
 import Bottombar from "#components/Bottombar.tsx";
+import { asset } from "$fresh/runtime.ts";
+import { type PageProps } from "$fresh/server.ts";
+import * as lilycat from "jsr:@luhmllo/lilycat@0.1.30";
 
 export default function App({ Component, url }: PageProps) {
   const canonicalUrl = new URL(url.pathname, url.origin).href;
@@ -61,9 +61,13 @@ export default function App({ Component, url }: PageProps) {
         />
       </head>
       <body>
-        <Appbar />
-        <Component />
-        <Bottombar />
+        <div id="app">
+          <Appbar />
+          <div id="app__content">
+            <Component />
+          </div>
+          <Bottombar />
+        </div>
         <script type="module" src={asset("/vendors/dropdown.min.js")} />
       </body>
     </html>

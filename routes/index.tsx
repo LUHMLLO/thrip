@@ -1,6 +1,6 @@
 export default function Page() {
   return (
-    <main id="views">
+    <>
       {[...Array(3)].map(() => {
         return (
           <article key={crypto.randomUUID()}>
@@ -66,6 +66,6 @@ export default function Page() {
           </article>
         );
       })}
-    </main>
+    </>
   );
 }

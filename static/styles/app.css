@@ -1,9 +1,6 @@
 :root {
-  --clr-background: hsl(0deg, 0%, 5%);
-  --clr-text: hsl(0deg, 0%, 95%);
-  --clr-primary: hsl(0deg, 0%, 10%);
-  --clr-secondary: hsl(0deg, 0%, 25%);
-  --clr-accent: hsl(0deg, 0%, 50%);
+  --clr-text: light-dark(#0d0d0d, #f2f2f2);
+  --clr-background: light-dark(#f2f2f2, #0d0d0d);
 }
 
 html {
@@ -11,19 +8,19 @@ html {
 }
 
 body {
-  display: grid;
-  grid-template-columns: [full-start] minmax(var(--xs, 5px), 1fr) [content-start] minmax(85dvw, 1fr) [content-end] minmax(var(--xs, 5px), 1fr) [full-end];
-  grid-template-rows: max-content minmax(0, 1fr) max-content;
   height: 100dvh;
   overflow: clip;
-  width: 100dvw;
 }
 
-#appbar {
-  display: flex;
-  flex-direction: column;
-  border-bottom: solid 1px hsl(from var(--clr-background) h s calc(l + 5));
-  grid-column: full;
+#app {
+  grid-column: expand;
+  grid-template-rows: max-content minmax(0, 1fr) max-content;
+}
+
+#app__topbar {
+  border-bottom: solid 2px hsl(from var(--clr-background) h s calc(l + var(--ratio-texts)));
+  grid-column: expand;
+  place-content: center;
   place-items: center;
 
   & > figure {
@@ -47,18 +44,22 @@ body {
   }
 }
 
-#views {
+#app__content {
   display: grid;
-  grid-column: full;
   grid-auto-rows: max-content;
+  grid-column: expand;
   grid-template-columns: subgrid;
   overflow: auto;
 
-  :where(article) {
+  & > * {
+    grid-column: inner;
+  }
+
+
+  & > :where(article) {
     border-bottom: solid 1px hsl(from var(--clr-background) h s calc(l + 5));
     display: flex;
     gap: var(--md, 15px);
-    grid-column: content;
     padding-block: var(--xl, 30px);
 
     aside {
@@ -72,14 +73,6 @@ body {
         flex: 1 1 100%;
         margin-inline: auto;
       }
-
-      x-dropdown {
-        --background: var(--clr-background);
-
-        button {
-          border-radius: 0;
-        }
-      }
     }
 
     & > x-flex {
@@ -91,7 +84,7 @@ body {
 #bottombar {
   border-top: solid 1px hsl(from var(--clr-background) h s calc(l + 5));
   gap: var(--nm, 20px);
-  grid-column: full;
+  grid-column: expand;
   overflow: clip;
   padding: var(--nm, 20px);
   place-content: center;
@@ -99,5 +92,23 @@ body {
 
   :where(.icon) {
     --size: var(--lg, 25px);
+  }
+}
+
+
+
+:where(x-dropdown) {
+  &:not(:defined) {
+    display: none;
+    opacity: 0;
+    visibility: 0;
+  }
+
+  &::part(dropmenu) {
+    padding: 0;
+  }
+
+  button {
+    border-radius: 0;
   }
 }
